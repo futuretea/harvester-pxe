@@ -1,0 +1,15 @@
+token: token             # Replace with a desired token
+os:
+  hostname: harv-test        # Set a hostname. This can be omitted if DHCP server offers hostnames.
+  password: root     # Replace with a your password
+install:
+  mode: create
+  mgmt_interface: eth0   # The management interface name
+  device: /dev/sda       # The target disk to install
+  networks:
+  - interface: eth0
+    method: static
+    ip: 192.168.1.81
+    subnetMask: 255.255.255.0
+    gateway: 192.168.1.1
+    dnsNameservers: 192.168.1.1

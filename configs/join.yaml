@@ -1,0 +1,8 @@
+server_url: https://192.168.1.81:6443
+token: token             # Replace with a desired token
+os:
+  password: root     # Replace with a your password
+install:
+  mode: join
+  mgmt_interface: eth0   # The management interface name
+  device: /dev/sda       # The target disk to install

@@ -2,4 +2,4 @@
 
 dhcp
 isset ${next-server} || set next-server 192.168.1.1
-chain http://${next-server}/harvester.ipxe
+chain http://${next-server}/menu.ipxe
