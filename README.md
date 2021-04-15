@@ -66,3 +66,5 @@ configs
 注意第一个节点的mac地址要与生成的menu.ipxe配置中的匹配
 
 引导顺序：dhcp -> 编译的undionly.kpxe -> 生成的menu.ipxe -> 下载的initrd,kernel,iso与配置的config
+![image](https://user-images.githubusercontent.com/15064560/114909046-4c9e9b80-9e4f-11eb-9d59-e256bc114aa9.png)
+
