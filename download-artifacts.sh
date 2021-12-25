@@ -20,17 +20,22 @@ if [ $# -lt 1 ]; then
 fi
 
 VERSION=$1
-base_url=https://releases.rancher.com/harvester/$VERSION
-artifact_names=(
-"harvester-amd64.iso"
-"harvester-initrd-amd64"
-"harvester-vmlinuz-amd64"
+base_url=https://releases.rancher.com/harvester
+artifact_suffixs=(
+"amd64.iso"
+"initrd-amd64"
+"vmlinuz-amd64"
+"rootfs-amd64.squashfs"
 )
 mkdir -p artifacts
 pushd artifacts
-mkdir $VERSION
-for ((i = 1; i <= ${#artifact_names[@]}; i++)); do
-  artifact_name=${artifact_names[$i-1]}
-  wget -O $VERSION/${artifact_name} ${base_url}/${artifact_name}
+mkdir -p $VERSION
+for ((i = 1; i <= ${#artifact_suffixs[@]}; i++)); do
+  artifact_suffix=${artifact_suffixs[$i-1]}
+  artifact_local_name=${VERSION}/harvester-${artifact_suffix}
+  artifact_remote_url=${base_url}/${VERSION}/harvester-${VERSION}-${artifact_suffix}
+  if [[ ! -f "${artifact_local_name}" ]];then
+  	wget -O ${artifact_local_name} ${artifact_remote_url}
+  fi
 done
 popd

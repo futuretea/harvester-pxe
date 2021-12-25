@@ -8,19 +8,21 @@ git clone https://github.com/futuretea/harvester-pxe.git
 cd harvester-pxe
 
 # 根据版本下载iso的资源
-# 可以下载不同的版本，在后续的步骤中可以选择使用的版本, 最新的版本为master
-./download-artifacts.sh v0.2.0-rc2
+# 可以下载不同的版本，在后续的步骤中可以选择使用的版本
+./download-artifacts.sh v1.0.0
 
 ```
 ```bash
-$ tree ./artifacts
-./artifacts
-└── v0.2.0-rc2
-    ├── harvester-amd64.iso
-    ├── harvester-initrd-amd64
-    └── harvester-vmlinuz-amd64
+$ tree ./artifacts/v1.0.0
 
-1 directory, 3 files
+artifacts/v1.0.0
+├── harvester-amd64.iso
+├── harvester-initrd-amd64
+├── harvester-rootfs-amd64.squashfs
+└── harvester-vmlinuz-amd64
+
+0 directories, 4 files
+
 ```
 
 ## 将本目录暴露为http服务
@@ -39,9 +41,9 @@ $ tree ./artifacts
 ```
 
 ## 生成菜单配置文件
-假设指向本目录的http访问路径为http://192.168.1.79, 第一个节点的mac地址为00:50:56:0b:46:a2, 安装的版本为v0.2.0-rc2
+假设指向本目录的http访问路径为http://192.168.1.79, 第一个节点的mac地址为00:50:56:0b:46:a2, 安装的版本为v1.0.0
 ```bash
-./create-menu-ipxe.sh http://192.168.1.79 00:50:56:0b:46:a2 v0.2.0-rc2
+./create-menu-ipxe.sh http://192.168.1.79 00:50:56:0b:46:a2 v1.0.0
 ```
 这个菜单在安装的时候效果如下
 ![image](https://user-images.githubusercontent.com/15064560/114909046-4c9e9b80-9e4f-11eb-9d59-e256bc114aa9.png)

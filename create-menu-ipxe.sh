@@ -46,7 +46,7 @@ set harvester-version $HARVESTER_VERSION
   goto harvester
 
 :harvester
-  kernel \${base-url}/artifacts/\${harvester-version}/harvester-vmlinuz-amd64 k3os.mode=install k3os.debug console=tty1 harvester.install.automatic=true harvester.install.iso_url=\${base-url}/artifacts/\${harvester-version}/harvester-amd64.iso harvester.install.config_url=\${base-url}/configs/\${selected}.yaml 
+  kernel \${base-url}/artifacts/\${harvester-version}/harvester-vmlinuz-amd64 ip=dhcp net.ifnames=1 rd.cos.disable console=tty1 harvester.install.automatic=true root=live:\${base-url}/artifacts/\${harvester-version}/harvester-rootfs-amd64.squashfs harvester.install.config_url=\${base-url}/configs/\${selected}.yaml
   initrd \${base-url}/artifacts/\${harvester-version}/harvester-initrd-amd64
   boot
 

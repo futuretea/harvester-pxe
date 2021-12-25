@@ -1,15 +1,21 @@
 token: token             # Replace with a desired token
 os:
-  hostname: harv-test        # Set a hostname. This can be omitted if DHCP server offers hostnames.
+  hostname: harv-test-node1        # Set a hostname. This can be omitted if DHCP server offers hostnames.
   password: root     # Replace with a your password
+  ntp_servers:
+    - ntp.aliyun.com
 install:
   mode: create
-  mgmt_interface: eth0   # The management interface name
-  device: /dev/sda       # The target disk to install
   networks:
-  - interface: eth0
-    method: static
-    ip: 192.168.1.81
-    subnetMask: 255.255.255.0
-    gateway: 192.168.1.1
-    dnsNameservers: 192.168.1.1
+    harvester-mgmt:       # The management bond name. This is mandatory.
+      interfaces:
+      - name: ens33
+      default_route: true
+      method: dhcp
+      bond_options:
+        mode: balance-tlb
+        miimon: 100
+  device: /dev/sda
+  iso_url: http://192.168.5.79/harvester-pxe/artifacts/v1.0.0/harvester-amd64.iso
+  vip: 192.168.5.81       # The VIP to access the Harvester GUI. Make sure the IP is free to use.
+  vip_mode: static        # Or dhcp, check configuration file for more information.
