@@ -2,3 +2,4 @@
 /ipxe
 .vscode
 menu.ipxe
+boot.ipxe

@@ -16,6 +16,6 @@ install:
         mode: balance-tlb
         miimon: 100
   device: /dev/sda
-  iso_url: http://192.168.5.79/harvester-pxe/artifacts/v1.0.0/harvester-amd64.iso
+  iso_url: http://192.168.5.79/harvester-pxe/artifacts/v1.0.2/harvester-amd64.iso
   vip: 192.168.5.81       # The VIP to access the Harvester GUI. Make sure the IP is free to use.
   vip_mode: static        # Or dhcp, check configuration file for more information.
